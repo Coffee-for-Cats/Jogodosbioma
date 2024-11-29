@@ -9,6 +9,12 @@ if (!username) window.location = 'login';
 document.getElementById('playerName').innerText = username;
 document.getElementById('difficulty').innerText = difficulty;
 
+alert("Seu objetivo é melhorar a Saúde, Educação e Esgoto da sua cidade!");
+alert("Você pode vender árvores para construir casas, mas o meio ambiente vai sofrer!");
+let firemanPrice = 3000;
+if (difficulty != "sustentavel") firemanPrice += 1000;
+alert("Mas cuidado! Incêndios são comuns na sua região, e você gasta R$" + firemanPrice);
+
 export const gameStatus = {
   dinheiro: 4000,
   meioAmbiente: 80, // 80%

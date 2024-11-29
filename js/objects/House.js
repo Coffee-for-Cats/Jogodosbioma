@@ -22,6 +22,8 @@ export function House(x, y) {
   house.style.top = `${y}px`;
   house.style.left = `${x}px`;
 
+  house.style.pointerEvents = 'none';
+
   // ela cria lixo, logo, o meio-ambiente sofre =(
   setInterval(() => {
     if (difficulty == "sustentavel" || difficulty == "moderado") {
@@ -37,7 +39,7 @@ export function House(x, y) {
   setInterval(() => {
 
     // uma chance pequena
-    if (Math.random() < (.05 * houseSize)) {
+    if (Math.random() < (.07 * houseSize)) {
       const wildFire = document.createElement('img')
       wildFire.src = './assets/fire.gif'
       wildFire.style.top = `${y}px`;
@@ -49,8 +51,10 @@ export function House(x, y) {
       }, 500)
 
       wildFire.addEventListener('click', (e) => {
-        if (gameStatus.dinheiro > 5000) {
-          gameStatus.dinheiro -= 5000
+        let firemanPrice = 3000;
+        if (difficulty != "sustentavel") firemanPrice += 1000;
+        if (gameStatus.dinheiro > firemanPrice) {
+          gameStatus.dinheiro -= firemanPrice
           clearInterval(burning)
           mapContainer.removeChild(wildFire)
         }
